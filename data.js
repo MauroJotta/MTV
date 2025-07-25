@@ -31,7 +31,7 @@
       { "categoria": "Entretenimiento", "titulo": "Star Channel", "url": "https://tvlibreonline.org/html/fl/?get=Rk9YSEQ=" },
       { "categoria": "Entretenimiento", "titulo": "TCM", "url": "https://tvlibreonline.org/html/fl/?get=VENN" }
     ];
-https://tvlibreonline.org/html/fl/?get=QWR1bHRfU3dpbQ==
+
     const container = document.getElementById("contenedor");
     if (!container) {
       console.error("No se encontró el contenedor");
