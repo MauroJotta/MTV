@@ -1,48 +1,26 @@
 // data.js
 
-// Lista de canales
-const misDatos = [
+// Guardamos en window para evitar duplicación de const
+window.misDatos = [
   { "categoria": "Noticias", "titulo": "TN", "url": "https://tvlibreonline.org/html/fl/?get=VG9kb05vdGljaWFz" },
   { "categoria": "Noticias", "titulo": "Telefe", "url": "https://tvlibreonline.org/html/fl/?get=VGVsZWZlSEQ=" },
   { "categoria": "Noticias", "titulo": "Canal 13", "url": "https://tvlibreonline.org/html/fl/?get=QXJ0ZWFySEQ" },
-  { "categoria": "Noticias", "titulo": "TV Publica", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWw3" },
-  { "categoria": "Noticias", "titulo": "La Nacion", "url": "https://tvlibreonline.org/html/fl/?get=TGFfTmFjaW9u" },
-  { "categoria": "Noticias", "titulo": "Canal Rural", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWxfUnVyYWw=" },
-  { "categoria": "Deportes", "titulo": "TyC", "url": "https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ" },
-  { "categoria": "Deportes", "titulo": "TNT Sports", "url": "https://tvlibreonline.org/html/fl/?get=VE5UX1Nwb3J0c19IRA" },
-  { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://tvlibreonline.org/html/fl/?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE" },
-  { "categoria": "Deportes", "titulo": "Fox Sports", "url": "https://tvlibreonline.org/html/fl/?get=Rm94U3BvcnRz" },
-  { "categoria": "Streaming", "titulo": "Carajo", "url": "https://www.youtube.com/@CarajoStream/live" },
-  { "categoria": "Entretenimiento", "titulo": "Comedy Central", "url": "https://tvlibreonline.org/html/fl/?get=Q29tZWR5Q2VudHJhbA" },
-  { "categoria": "Noticias", "titulo": "Diputados TV", "url": "https://tvlibreonline.org/html/fl/?get=RGlwdXRhZG9zX1RW" },
-  { "categoria": "Documentales", "titulo": "Encuentro", "url": "https://tvlibreonline.org/html/fl/?get=RW5jdWVudHJv" },
-  { "categoria": "Deportes", "titulo": "DSports", "url": "https://streamtpglobal.com/global1.php?stream=dsports" },
-  { "categoria": "Deportes", "titulo": "DeporTV", "url": "https://tvlibreonline.org/html/fl/?get=RGVwb3JUVkhE" },
-  { "categoria": "Documentales", "titulo": "Discovery Channel", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5SEQ=" },
-  { "categoria": "Documentales", "titulo": "Theater", "url": "https://tvlibreonline.org/html/fl/?get=VGhlYXRlcl9IRA==" },
-  { "categoria": "Documentales", "titulo": "TLC", "url": "https://tvlibreonline.org/html/fl/?get=VExD" },
-  { "categoria": "Deportes", "titulo": "NBA TV", "url": "https://tvlibreonline.org/html/fl/?get=TkJBX1RW" },
-  { "categoria": "Documentales", "titulo": "Turbo", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5VHVyYm8=" },
-  { "categoria": "Documentales", "titulo": "Home & Health", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5SG9tZUhlYWx0aEhE" },
-  { "categoria": "Entretenimiento", "titulo": "Adult Swim", "url": "https://tvlibreonline.org/html/fl/?get=QWR1bHRfU3dpbQ==" },
-  { "categoria": "Entretenimiento", "titulo": "Star Channel", "url": "https://tvlibreonline.org/html/fl/?get=Rk9YSEQ=" },
-  { "categoria": "Entretenimiento", "titulo": "TCM", "url": "https://tvlibreonline.org/html/fl/?get=VENN" },
-  { "categoria": "Streaming", "titulo": "Olga", "url": "https://www.youtube.com/@olgaenvivo_/live" },
-  { "categoria": "Streaming", "titulo": "Neura", "url": "https://www.youtube.com/@NeuraMedia/live" },
+  ...
   { "categoria": "Streaming", "titulo": "Campeones TV", "url": "https://www.youtube.com/@CampeonesTV/live" }
 ];
 
-// Función principal exportada al scope global
+// Función global para renderizar
 function renderizarCanales() {
+  const datos = window.misDatos || [];
   const container = document.getElementById("contenedor");
   if (!container) {
     console.error("No se encontró el contenedor");
     return;
   }
 
-  container.innerHTML = "<h1 class='mb-4'>Canales</h1>"; // Limpia contenido anterior
+  container.innerHTML = "<h1 class='mb-4'>Canales</h1>";
 
-  const categorias = [...new Set(misDatos.map(item => item.categoria))];
+  const categorias = [...new Set(datos.map(item => item.categoria))];
 
   categorias.forEach((cat, rowIndex) => {
     const titulo = document.createElement("h3");
@@ -55,7 +33,7 @@ function renderizarCanales() {
     fila.setAttribute("data-row", rowIndex);
     container.appendChild(fila);
 
-    const items = misDatos.filter(i => i.categoria === cat);
+    const items = datos.filter(i => i.categoria === cat);
 
     items.forEach((item, colIndex) => {
       const card = document.createElement("a");
@@ -96,7 +74,6 @@ function renderizarCanales() {
     });
   });
 
-  // Navegación por teclado
   document.querySelectorAll('.focusable').forEach(el => {
     el.addEventListener('keydown', e => {
       const current = e.target;
@@ -121,14 +98,13 @@ function renderizarCanales() {
     });
   });
 
-  // Primer foco automático
   setTimeout(() => {
     const first = document.querySelector('.focusable');
     if (first) first.focus();
   }, 100);
 }
 
-// Ejecutar al cargar si no es Cordova
+// Ejecutar automáticamente al cargar si no es Cordova
 if (!window.cordova) {
   document.addEventListener("DOMContentLoaded", renderizarCanales);
 }
