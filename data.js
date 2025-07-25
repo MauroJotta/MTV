@@ -54,7 +54,7 @@ window.misDatos = [
 
       items.forEach((item, colIndex) => {
         const card = document.createElement("a");
-        card.className = "card focusable text-decoration-none";
+        card.className = "card col-5 focusable text-decoration-none";
         card.setAttribute("tabindex", "0");
         card.setAttribute("data-row", rowIndex);
         card.setAttribute("data-col", colIndex);
