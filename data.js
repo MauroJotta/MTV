@@ -14,7 +14,8 @@
       { "categoria": "Noticias", "titulo": "Canal Rural", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWxfUnVyYWw=" },
       { "categoria": "Deportes", "titulo": "TyC", "url": "https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ" },
       { "categoria": "Deportes", "titulo": "TNT Sports", "url": "https://tvlibreonline.org/html/fl/?get=VE5UX1Nwb3J0c19IRA" },
-      { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://tvlibreonline.org/html/fl/?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE" }
+      { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://tvlibreonline.org/html/fl/?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE" },
+      { "categoria": "Deportes", "titulo": "Fox Sports", "url": "https://tvlibreonline.org/html/fl/?get=Rm94U3BvcnRz" }
     ];
 
     const container = document.getElementById("contenedor");
