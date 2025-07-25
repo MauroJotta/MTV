@@ -15,9 +15,23 @@
       { "categoria": "Deportes", "titulo": "TNT Sports", "url": "https://tvlibreonline.org/html/fl/?get=VE5UX1Nwb3J0c19IRA" },
       { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://tvlibreonline.org/html/fl/?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE" },
       { "categoria": "Deportes", "titulo": "Fox Sports", "url": "https://tvlibreonline.org/html/fl/?get=Rm94U3BvcnRz" },
-      { "categoria": "Streaming", "titulo": "Carajo", "url": "https://www.youtube.com/@El13Chile/live" }
+      { "categoria": "Streaming", "titulo": "Carajo", "url": "https://www.youtube.com/@CarajoStream/live" },
+      { "categoria": "Entretenimiento", "titulo": "Comedy Central", "url": "https://tvlibreonline.org/html/fl/?get=Q29tZWR5Q2VudHJhbA" },
+      { "categoria": "Noticias", "titulo": "Diputados TV", "url": "https://tvlibreonline.org/html/fl/?get=RGlwdXRhZG9zX1RW" },
+      { "categoria": "Documentales", "titulo": "Encuentro", "url": "https://tvlibreonline.org/html/fl/?get=RW5jdWVudHJv" },
+      { "categoria": "Deportes", "titulo": "DSports", "url": "https://streamtpglobal.com/global1.php?stream=dsports" },
+      { "categoria": "Deportes", "titulo": "DeporTV", "url": "https://tvlibreonline.org/html/fl/?get=RGVwb3JUVkhE" },
+      { "categoria": "Documentales", "titulo": "Channel", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5SEQ=" },
+      { "categoria": "Documentales", "titulo": "Theater", "url": "https://tvlibreonline.org/html/fl/?get=VGhlYXRlcl9IRA==" },
+      { "categoria": "Documentales", "titulo": "TLC", "url": "https://tvlibreonline.org/html/fl/?get=VExD" },
+      { "categoria": "Deportes", "titulo": "NBA TV", "url": "https://tvlibreonline.org/html/fl/?get=TkJBX1RW" },
+      { "categoria": "Documentales", "titulo": "Turbo", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5VHVyYm8=" },
+      { "categoria": "Documentales", "titulo": "Home & Health", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5SG9tZUhlYWx0aEhE" },
+      { "categoria": "Entretenimiento", "titulo": "Adult Swim", "url": "https://tvlibreonline.org/html/fl/?get=QWR1bHRfU3dpbQ==" },
+      { "categoria": "Entretenimiento", "titulo": "Star Channel", "url": "https://tvlibreonline.org/html/fl/?get=Rk9YSEQ=" },
+      { "categoria": "Entretenimiento", "titulo": "TCM", "url": "https://tvlibreonline.org/html/fl/?get=VENN" }
     ];
-
+https://tvlibreonline.org/html/fl/?get=QWR1bHRfU3dpbQ==
     const container = document.getElementById("contenedor");
     if (!container) {
       console.error("No se encontró el contenedor");
