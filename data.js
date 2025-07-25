@@ -1,0 +1,122 @@
+(function iniciarApp() {
+  const iniciar = () => {
+    console.log("Intentando cargar script externo...");
+    const p = document.createElement('p');
+    p.textContent = 'andando';
+    document.body.appendChild(p);
+    
+    const misDatos = [
+      { "categoria": "Noticias", "titulo": "TN", "url": "https://tvlibreonline.org/html/fl/?get=VG9kb05vdGljaWFz" },
+      { "categoria": "Noticias", "titulo": "Telefe", "url": "https://tvlibreonline.org/html/fl/?get=VGVsZWZlSEQ=" },
+      { "categoria": "Noticias", "titulo": "Canal 13", "url": "https://tvlibreonline.org/html/fl/?get=QXJ0ZWFySEQ" },
+      { "categoria": "Noticias", "titulo": "TV Publica", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWw3" },
+      { "categoria": "Noticias", "titulo": "La Nacion", "url": "https://tvlibreonline.org/html/fl/?get=TGFfTmFjaW9u" },
+      { "categoria": "Noticias", "titulo": "Canal Rural", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWxfUnVyYWw=" },
+      { "categoria": "Deportes", "titulo": "TyC", "url": "https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ" },
+      { "categoria": "Deportes", "titulo": "TNT Sports", "url": "https://tvlibreonline.org/html/fl/?get=VE5UX1Nwb3J0c19IRA" },
+      { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://tvlibreonline.org/html/fl/?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE" }
+    ];
+
+    const container = document.getElementById("contenedor");
+    if (!container) {
+      console.error("No se encontró el contenedor");
+      return;
+    }
+
+    const categorias = [...new Set(misDatos.map(item => item.categoria))];
+
+    categorias.forEach((cat, rowIndex) => {
+      const titulo = document.createElement("h3");
+      titulo.textContent = cat;
+      titulo.className = "mt-4 mb-2";
+      container.appendChild(titulo);
+
+      const fila = document.createElement("div");
+      fila.className = "d-flex flex-row flex-wrap gap-3 mb-3";
+      fila.setAttribute("data-row", rowIndex);
+      container.appendChild(fila);
+
+      const items = misDatos.filter(i => i.categoria === cat);
+
+      items.forEach((item, colIndex) => {
+        const card = document.createElement("a");
+        card.className = "card focusable text-decoration-none";
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("data-row", rowIndex);
+        card.setAttribute("data-col", colIndex);
+        card.setAttribute("href", item.url);
+        card.setAttribute("data-url", item.url);
+        card.style.width = "180px";
+        card.style.border = "none";
+        card.style.borderRadius = "16px";
+        card.style.overflow = "hidden";
+        card.style.background = "linear-gradient(135deg, #111, #223355)";
+        card.style.color = "white";
+        card.style.display = "flex";
+        card.style.flexDirection = "column";
+        card.style.justifyContent = "space-between";
+        card.style.padding = "12px 16px";
+        card.style.boxShadow = "0 4px 8px rgba(0,0,0,0.6)";
+        card.style.transition = "transform 0.2s ease, box-shadow 0.2s ease";
+        card.style.cursor = "pointer";
+
+        card.onmouseenter = () => {
+          card.style.transform = "scale(1.05)";
+          card.style.boxShadow = "0 8px 20px rgba(0,0,0,0.9)";
+        };
+        card.onmouseleave = () => {
+          card.style.transform = "scale(1)";
+          card.style.boxShadow = "0 4px 8px rgba(0,0,0,0.6)";
+        };
+
+        card.innerHTML = `
+          <small style="opacity: 0.6; font-weight: 400;">${item.categoria}</small>
+          <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-top: 10px; margin-bottom: 10px;">
+            ${item.titulo}
+          </div>
+          <div style="background-color: rgba(255,255,255,0.1); border-radius: 12px; width: fit-content; padding: 4px 12px; font-size: 0.75rem; opacity: 0.8; margin: 0 auto 4px auto;">
+            Ver Canal
+          </div>
+        `;
+
+        fila.appendChild(card);
+      });
+    });
+
+    document.querySelectorAll('.focusable').forEach(el => {
+      el.addEventListener('keydown', e => {
+        const current = e.target;
+        const row = parseInt(current.dataset.row);
+        const col = parseInt(current.dataset.col);
+        let next;
+
+        if (e.key === "ArrowRight") {
+          next = document.querySelector(`.focusable[data-row="${row}"][data-col="${col + 1}"]`);
+        } else if (e.key === "ArrowLeft") {
+          next = document.querySelector(`.focusable[data-row="${row}"][data-col="${col - 1}"]`);
+        } else if (e.key === "ArrowDown") {
+          next = document.querySelector(`.focusable[data-row="${row + 1}"][data-col="${col}"]`);
+        } else if (e.key === "ArrowUp") {
+          next = document.querySelector(`.focusable[data-row="${row - 1}"][data-col="${col}"]`);
+        } else if (e.key === "Enter") {
+          const url = current.dataset.url;
+          if (url) window.location.href = url;
+        }
+
+        if (next) next.focus();
+      });
+    });
+
+    setTimeout(() => {
+      const first = document.querySelector('.focusable');
+      if (first) first.focus();
+    }, 100);
+  };
+
+  // Si es Cordova, esperamos deviceready
+  if (window.cordova) {
+    document.addEventListener("deviceready", iniciar);
+  } else {
+    document.addEventListener("DOMContentLoaded", iniciar);
+  }
+})();
