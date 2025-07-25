@@ -46,7 +46,7 @@ window.misDatos = [
       container.appendChild(titulo);
 
       const fila = document.createElement("div");
-      fila.className = "d-flex flex-row flex-wrap gap-3 mb-3";
+      fila.className = "d-flex flex-row flex-wrap justify-content-evenly gap-3 mb-3";
       fila.setAttribute("data-row", rowIndex);
       container.appendChild(fila);
 
@@ -54,14 +54,14 @@ window.misDatos = [
 
       items.forEach((item, colIndex) => {
         const card = document.createElement("a");
-        card.className = "card col-5 focusable text-decoration-none";
+        card.className = "card col-5 col-sm-4 col-md-3 col-xxl-2 focusable text-decoration-none";
         card.setAttribute("tabindex", "0");
         card.setAttribute("data-row", rowIndex);
         card.setAttribute("data-col", colIndex);
         card.setAttribute("href", item.url);
         card.setAttribute("data-url", item.url);
         card.style.cssText = `
-          width: 180px; border: none; border-radius: 16px; overflow: hidden;
+          border: none; border-radius: 16px; overflow: hidden;
           background: linear-gradient(135deg, #111, #223355); color: white;
           display: flex; flex-direction: column; justify-content: space-between;
           padding: 12px 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.6);
