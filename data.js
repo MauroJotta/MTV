@@ -39,11 +39,27 @@ window.misDatos = [
 
     const categorias = [...new Set(datos.map(d => d.categoria))];
 
+    const navbarCategorias = document.getElementById("navbarCategorias");
+if (navbarCategorias) navbarCategorias.innerHTML = ""; // Limpiar primero
+
+categorias.forEach((cat) => {
+  const id = `cat-${cat.toLowerCase().replace(/\s+/g, "-")}`;
+
+  // Crear botón en navbar
+  if (navbarCategorias) {
+    const li = document.createElement("li");
+    li.className = "nav-item";
+    li.innerHTML = `<a class="nav-link" href="#${id}">${cat}</a>`;
+    navbarCategorias.appendChild(li);
+  }
+});
+
     categorias.forEach((cat, rowIndex) => {
       const titulo = document.createElement("h3");
-      titulo.textContent = cat;
-      titulo.className = "mt-4 mb-2";
-      container.appendChild(titulo);
+titulo.textContent = cat;
+titulo.className = "mt-4 mb-2";
+titulo.setAttribute("id", `cat-${cat.toLowerCase().replace(/\s+/g, "-")}`);
+container.appendChild(titulo);
 
       const fila = document.createElement("div");
       fila.className = "d-flex flex-row flex-wrap justify-content-evenly gap-3 mb-3";
@@ -123,3 +139,6 @@ window.misDatos = [
       window.renderizarCanales();
     });
   }
+document.addEventListener('deviceready', function () {
+  cordova.plugins.backgroundMode.enable();
+}, false);
