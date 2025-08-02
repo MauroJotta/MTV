@@ -1,66 +1,37 @@
+<script>
+  window.misDatos = [ /* ... tu array tal como está ... */ ];
 
-window.misDatos = [
-  { "categoria": "Noticias", "titulo": "TN", "url": "https://tvlibreonline.org/html/fl/?get=VG9kb05vdGljaWFz" },
-  { "categoria": "Noticias", "titulo": "Telefe", "url": "https://tvlibreonline.org/html/dash.html?get=aHR0cHM6Ly90ZWxlZmV2aWFjb20xLm…plZC5uZXQvaGxzL2xpdmUvMjAzNzk4Ny92aWFjb21JTlQvVE9LL21hc3Rlci13aWxkMS5tM3U4" },
-  { "categoria": "Noticias", "titulo": "Canal 13", "url": "https://tvlibreonline.org/html/hls.html?get=aHR0cHM6Ly9saXZlLTAxLTAyLWVsdHJlY2Uudm9kZ2MubmV0L2VsdHJlY2V0di9pbmRleC5tM3U4" },
-  { "categoria": "Noticias", "titulo": "TV Publica", "url": "https://la14hd.com/vivo/canales.php?stream=tvpublica" },
-  { "categoria": "Noticias", "titulo": "La Nacion", "url": "https://tvlibreonline.org/html/fl/?get=TGFfTmFjaW9u" },
-  { "categoria": "Noticias", "titulo": "Canal Rural", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWxfUnVyYWw=" },
-  { "categoria": "Deportes", "titulo": "TyC", "url": "https://streamtpglobal.com/global1.php?stream=tycsports" },
-  { "categoria": "Deportes", "titulo": "TNT Sports", "url": "https://tvlibreonline.org/html/fl/?get=VE5UX1Nwb3J0c19IRA" },
-  { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://streamtpglobal.com/global2.php?stream=espn" },
-  { "categoria": "Deportes", "titulo": "Fox Sports", "url": "https://tvlibreonline.org/html/fl/?get=Rm94U3BvcnRz" },
-  { "categoria": "Deportes", "titulo": "Dazn F1", "url": "https://rereyano.ru/player/3/60" },
-  { "categoria": "Deportes", "titulo": "Fox Sports 2", "url": "https://streamtpglobal.com/global1.php?stream=fox2ar" },
-  { "categoria": "Deportes", "titulo": "Fox Sports 3", "url": "https://la14hd.com/vivo/canal.php?stream=foxsports3" },
-  { "categoria": "Streaming", "titulo": "Carajo", "url": "https://www.youtube.com/@CarajoStream/live" },
-  { "categoria": "Entretenimiento", "titulo": "Comedy Central", "url": "https://tvlibreonline.org/html/fl/?get=Q29tZWR5Q2VudHJhbA" },
-  { "categoria": "Noticias", "titulo": "Diputados TV", "url": "https://tvlibreonline.org/html/fl/?get=RGlwdXRhZG9zX1RW" },
-  { "categoria": "Documentales", "titulo": "Encuentro", "url": "https://tvlibreonline.org/html/fl/?get=RW5jdWVudHJv" },
-  { "categoria": "Deportes", "titulo": "DSports", "url": "https://streamtpglobal.com/global1.php?stream=dsports" },
-  { "categoria": "Deportes", "titulo": "DeporTV", "url": "https://tvlibreonline.org/html/fl/?get=RGVwb3JUVkhE" },
-  { "categoria": "Documentales", "titulo": "Discovery", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5SEQ=" },
-  { "categoria": "Documentales", "titulo": "Theater", "url": "https://tvlibreonline.org/html/fl/?get=VGhlYXRlcl9IRA==" },
-  { "categoria": "Documentales", "titulo": "TLC", "url": "https://tvlibreonline.org/html/fl/?get=VExD" },
-  { "categoria": "Deportes", "titulo": "Gol TV", "url": "https://streamtpglobal.com/global1.php?stream=goltv" },
-  { "categoria": "Documentales", "titulo": "Turbo", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5VHVyYm8=" },
-  { "categoria": "Documentales", "titulo": "Home & Health", "url": "https://tvlibreonline.org/html/fl/?get=RGlzY292ZXJ5SG9tZUhlYWx0aEhE" },
-  { "categoria": "Entretenimiento", "titulo": "Adult Swim", "url": "https://tvlibreonline.org/html/fl/?get=QWR1bHRfU3dpbQ==" },
-  { "categoria": "Entretenimiento", "titulo": "Star Channel", "url": "https://tvlibreonline.org/html/fl/?get=Rk9YSEQ=" },
-  { "categoria": "Entretenimiento", "titulo": "TCM", "url": "https://tvlibreonline.org/html/fl/?get=VENN" },
-  { "categoria": "Streaming", "titulo": "Olga", "url": "https://www.youtube.com/@olgaenvivo_/live" },
-  { "categoria": "Streaming", "titulo": "Neura", "url": "https://www.youtube.com/@NeuraMedia/live" },
-  { "categoria": "Streaming", "titulo": "Campeones TV", "url": "https://www.youtube.com/@CampeonesTV/live" }
-];
-
- window.renderizarCanales = function () {
+  window.renderizarCanales = function () {
     const datos = Array.isArray(window.misDatos) ? window.misDatos : [];
     const container = document.getElementById("contenedor");
     if (!container) return;
 
+    // ✅ Limpiar contenedor para evitar duplicados
+    container.innerHTML = "";
+
     const categorias = [...new Set(datos.map(d => d.categoria))];
 
     const navbarCategorias = document.getElementById("navbarCategorias");
-if (navbarCategorias) navbarCategorias.innerHTML = ""; // Limpiar primero
+    if (navbarCategorias) navbarCategorias.innerHTML = ""; // Limpiar navbar
 
-categorias.forEach((cat) => {
-  const id = `cat-${cat.toLowerCase().replace(/\s+/g, "-")}`;
+    categorias.forEach((cat) => {
+      const id = `cat-${cat.toLowerCase().replace(/\s+/g, "-")}`;
 
-  // Crear botón en navbar
-  if (navbarCategorias) {
-    const li = document.createElement("li");
-    li.className = "nav-item";
-    li.innerHTML = `<a class="nav-link" href="#${id}">${cat}</a>`;
-    navbarCategorias.appendChild(li);
-  }
-});
+      // Botón en navbar
+      if (navbarCategorias) {
+        const li = document.createElement("li");
+        li.className = "nav-item";
+        li.innerHTML = `<a class="nav-link" href="#${id}">${cat}</a>`;
+        navbarCategorias.appendChild(li);
+      }
+    });
 
     categorias.forEach((cat, rowIndex) => {
       const titulo = document.createElement("h3");
-titulo.textContent = cat;
-titulo.className = "mt-4 mb-2";
-titulo.setAttribute("id", `cat-${cat.toLowerCase().replace(/\s+/g, "-")}`);
-container.appendChild(titulo);
+      titulo.textContent = cat;
+      titulo.className = "mt-4 mb-2";
+      titulo.setAttribute("id", `cat-${cat.toLowerCase().replace(/\s+/g, "-")}`);
+      container.appendChild(titulo);
 
       const fila = document.createElement("div");
       fila.className = "d-flex flex-row flex-wrap justify-content-evenly gap-3 mb-3";
@@ -104,11 +75,47 @@ container.appendChild(titulo);
           </div>
         `;
 
+        // ✅ Verificar si el canal responde antes de redirigir
+        card.addEventListener("click", function (e) {
+          e.preventDefault();
+          const url = card.getAttribute("href");
+
+          const testIframe = document.createElement("iframe");
+          testIframe.style.display = "none";
+          testIframe.src = url;
+          document.body.appendChild(testIframe);
+
+          let failed = false;
+          const timeout = setTimeout(() => {
+            failed = true;
+            testIframe.remove();
+            alert("El canal no respondió. Redirigiendo al inicio...");
+            window.location.href = "index.html"; // Ajustá si tenés otra home
+          }, 5000); // 5 segundos de espera
+
+          testIframe.onload = () => {
+            if (!failed) {
+              clearTimeout(timeout);
+              window.location.href = url;
+            }
+          };
+
+          testIframe.onerror = () => {
+            if (!failed) {
+              failed = true;
+              clearTimeout(timeout);
+              testIframe.remove();
+              alert("El canal no se pudo cargar. Redirigiendo al inicio...");
+              window.location.href = "index.html";
+            }
+          };
+        });
+
         fila.appendChild(card);
       });
     });
 
-    // Teclas
+    // Navegación con teclado
     document.querySelectorAll('.focusable').forEach(el => {
       el.addEventListener('keydown', e => {
         const current = e.target;
@@ -129,6 +136,7 @@ container.appendChild(titulo);
       });
     });
 
+    // Focus inicial
     setTimeout(() => {
       const first = document.querySelector('.focusable');
       if (first) first.focus();
@@ -140,6 +148,8 @@ container.appendChild(titulo);
       window.renderizarCanales();
     });
   }
-document.addEventListener('deviceready', function () {
-  cordova.plugins.backgroundMode.enable();
-}, false);
+
+  document.addEventListener('deviceready', function () {
+    cordova.plugins.backgroundMode.enable();
+  }, false);
+</script>
