@@ -1,15 +1,18 @@
 
 window.misDatos = [
   { "categoria": "Noticias", "titulo": "TN", "url": "https://tvlibreonline.org/html/fl/?get=VG9kb05vdGljaWFz" },
-  { "categoria": "Noticias", "titulo": "Telefe", "url": "https://tvlibreonline.org/html/fl/?get=VGVsZWZlSEQ=" },
-  { "categoria": "Noticias", "titulo": "Canal 13", "url": "https://tvlibreonline.org/html/fl/?get=QXJ0ZWFySEQ" },
-  { "categoria": "Noticias", "titulo": "TV Publica", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWw3" },
+  { "categoria": "Noticias", "titulo": "Telefe", "url": "https://tvlibreonline.org/html/dash.html?get=aHR0cHM6Ly90ZWxlZmV2aWFjb20xLm…plZC5uZXQvaGxzL2xpdmUvMjAzNzk4Ny92aWFjb21JTlQvVE9LL21hc3Rlci13aWxkMS5tM3U4" },
+  { "categoria": "Noticias", "titulo": "Canal 13", "url": "https://tvlibreonline.org/html/hls.html?get=aHR0cHM6Ly9saXZlLTAxLTAyLWVsdHJlY2Uudm9kZ2MubmV0L2VsdHJlY2V0di9pbmRleC5tM3U4" },
+  { "categoria": "Noticias", "titulo": "TV Publica", "url": "https://la14hd.com/vivo/canales.php?stream=tvpublica" },
   { "categoria": "Noticias", "titulo": "La Nacion", "url": "https://tvlibreonline.org/html/fl/?get=TGFfTmFjaW9u" },
   { "categoria": "Noticias", "titulo": "Canal Rural", "url": "https://tvlibreonline.org/html/fl/?get=Q2FuYWxfUnVyYWw=" },
-  { "categoria": "Deportes", "titulo": "TyC", "url": "https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ" },
+  { "categoria": "Deportes", "titulo": "TyC", "url": "https://streamtpglobal.com/global1.php?stream=tycsports" },
   { "categoria": "Deportes", "titulo": "TNT Sports", "url": "https://tvlibreonline.org/html/fl/?get=VE5UX1Nwb3J0c19IRA" },
-  { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://tvlibreonline.org/html/fl/?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE" },
+  { "categoria": "Deportes", "titulo": "ESPN Premium", "url": "https://streamtpglobal.com/global2.php?stream=espn" },
   { "categoria": "Deportes", "titulo": "Fox Sports", "url": "https://tvlibreonline.org/html/fl/?get=Rm94U3BvcnRz" },
+  { "categoria": "Deportes", "titulo": "Dazn F1", "url": "https://rereyano.ru/player/3/60" },
+  { "categoria": "Deportes", "titulo": "Fox Sports 2", "url": "https://streamtpglobal.com/global1.php?stream=fox2ar" },
+  { "categoria": "Deportes", "titulo": "Fox Sports 3", "url": "https://la14hd.com/vivo/canal.php?stream=foxsports3" },
   { "categoria": "Streaming", "titulo": "Carajo", "url": "https://www.youtube.com/@CarajoStream/live" },
   { "categoria": "Entretenimiento", "titulo": "Comedy Central", "url": "https://tvlibreonline.org/html/fl/?get=Q29tZWR5Q2VudHJhbA" },
   { "categoria": "Noticias", "titulo": "Diputados TV", "url": "https://tvlibreonline.org/html/fl/?get=RGlwdXRhZG9zX1RW" },
@@ -34,8 +37,6 @@ window.misDatos = [
     const datos = Array.isArray(window.misDatos) ? window.misDatos : [];
     const container = document.getElementById("contenedor");
     if (!container) return;
-
-    container.innerHTML = "<h1 class='mb-4'>Canales</h1>";
 
     const categorias = [...new Set(datos.map(d => d.categoria))];
 
