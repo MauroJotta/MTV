@@ -1,0 +1,26 @@
+[
+  {
+    "id": "charizard",
+    "titulo": "Charizard",
+    "descripcion": "Dragón de fuego extremadamente poderoso.",
+    "tipo": "epica",
+    "dificultad": 5,
+    "categoria": "Fuego"
+  },
+  {
+    "id": "pikachu",
+    "titulo": "Pikachu",
+    "descripcion": "Ratón eléctrico muy amigable.",
+    "tipo": "rara",
+    "dificultad": 3,
+    "categoria": "Eléctrico"
+  },
+  {
+    "id": "bulbasaur",
+    "titulo": "Bulbasaur",
+    "descripcion": "Pokémon planta con una semilla en su espalda.",
+    "tipo": "comun",
+    "dificultad": 1,
+    "categoria": "Planta"
+  }
+]
