@@ -1,13 +1,10 @@
-{
-  "usuario1": {
-    "desbloqueadas": [
-      "charizard",
-      "bulbasaur"
-    ]
+[
+  {
+    "usuario": "mauro",
+    "items": [1]
   },
-  "usuario2": {
-    "desbloqueadas": [
-      "pikachu"
-    ]
+  {
+    "usuario": "sofia",
+    "items": [2, 3]
   }
-}
+]

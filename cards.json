@@ -1,26 +1,17 @@
 [
   {
-    "id": "charizard",
-    "titulo": "Charizard",
-    "descripcion": "Dragón de fuego extremadamente poderoso.",
-    "tipo": "epica",
-    "dificultad": 5,
-    "categoria": "Fuego"
+    "id": 1,
+    "nombre": "Messi",
+    "imagen": "https://example.com/messi.png"
   },
   {
-    "id": "pikachu",
-    "titulo": "Pikachu",
-    "descripcion": "Ratón eléctrico muy amigable.",
-    "tipo": "rara",
-    "dificultad": 3,
-    "categoria": "Eléctrico"
+    "id": 2,
+    "nombre": "Maradona",
+    "imagen": "https://example.com/maradona.png"
   },
   {
-    "id": "bulbasaur",
-    "titulo": "Bulbasaur",
-    "descripcion": "Pokémon planta con una semilla en su espalda.",
-    "tipo": "comun",
-    "dificultad": 1,
-    "categoria": "Planta"
+    "id": 3,
+    "nombre": "Coso",
+    "imagen": "https://example.com/maradona.png"
   }
 ]
