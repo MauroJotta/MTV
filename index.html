@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reproductor M3U</title>
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+.lista{
+    width:350px;
+    overflow-y:auto;
+    background:#222;
+}
+
+.canal{
+    padding:10px;
+    cursor:pointer;
+    border-bottom:1px solid #333;
+}
+
+.canal:hover{
+    background:#444;
+}
+
+.player{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+video{
+    width:100%;
+    height:100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="lista" id="listaCanales"></div>
+
+    <div class="player">
+        <video id="video" controls autoplay></video>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<script>
+
+const lista = document.getElementById("listaCanales");
+const video = document.getElementById("video");
+
+// 🔴 SOLO UNA URL
+const playlistUrl = "https://github.com/MauroJotta/MTV/blob/main/playlist.m3u";
+
+fetch(playlistUrl)
+.then(r => r.text())
+.then(texto => {
+
+    const lineas = texto.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+
+    let nombreActual = null;
+
+    for(const linea of lineas)
+    {
+        if(linea.startsWith("#EXTINF"))
+        {
+            nombreActual = linea.split(",").pop().trim();
+        }
+        else if(linea.startsWith("http"))
+        {
+            crearCanal(nombreActual || "Canal", linea);
+            nombreActual = null;
+        }
+    }
+});
+
+function crearCanal(nombre, url)
+{
+    const div = document.createElement("div");
+    div.className = "canal";
+    div.textContent = nombre;
+
+    div.onclick = () => reproducir(url);
+
+    lista.appendChild(div);
+}
+
+function reproducir(url)
+{
+    if(Hls.isSupported())
+    {
+        const hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+    }
+    else
+    {
+        video.src = url;
+    }
+
+    video.play();
+}
+
+</script>
+
+</body>
+</html>
